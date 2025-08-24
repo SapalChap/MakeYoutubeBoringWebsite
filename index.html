@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Make YouTube Boring</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-yellow: #FFD700;
+            --dark-yellow: #E6C200;
+            --text-dark: #2C3E50;
+            --text-light: #5A6C7D;
+            --bg-light: #F8F9FA;
+            --bg-white: #FFFFFF;
+            --border-light: #E8EAED;
+            --accent: #FF6B6B;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .main-wrapper {
+            background: var(--bg-white);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            flex: 1;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary-yellow) 0%, var(--dark-yellow) 100%);
+            padding: 30px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 50px;
+        }
+
+        .header-content {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo {
+            width: 50px;
+            height: 50px;
+            position: relative;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+        }
+
+        .logo-triangle {
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 0 50px 43.3px 0;
+            border-color: transparent var(--primary-yellow) transparent transparent;
+            filter: brightness(1.1);
+        }
+
+        .logo-eyes {
+            position: absolute;
+            top: 15px;
+            left: 12px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+            letter-spacing: 2px;
+        }
+
+        .site-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--text-dark);
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            display: flex;
+            gap: 30px;
+        }
+
+        nav a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 16px;
+            padding: 8px 16px;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            background: rgba(255,255,255,0.3);
+        }
+
+        nav a:hover {
+            background: rgba(255,255,255,0.6);
+            transform: translateY(-2px);
+        }
+
+        nav a.active {
+            background: var(--bg-white);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: var(--text-dark);
+        }
+
+        h2 {
+            font-size: 24px;
+            font-weight: 600;
+            margin: 40px 0 20px;
+            color: var(--text-dark);
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary-yellow);
+            display: inline-block;
+        }
+
+        h3 {
+            font-size: 18px;
+            font-weight: 600;
+            margin: 25px 0 15px;
+            color: var(--text-light);
+        }
+
+        p {
+            margin-bottom: 18px;
+            color: var(--text-light);
+            line-height: 1.8;
+        }
+
+        ul {
+            margin: 15px 0 20px 25px;
+            color: var(--text-light);
+        }
+
+        li {
+            margin-bottom: 12px;
+            line-height: 1.8;
+        }
+
+        li strong {
+            color: var(--text-dark);
+            font-weight: 500;
+        }
+
+        .home-content {
+            text-align: center;
+            padding: 80px 20px;
+            background: linear-gradient(135deg, var(--bg-light) 0%, var(--bg-white) 100%);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            margin-top: 40px;
+        }
+
+        .home-logo {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 30px;
+            position: relative;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .home-logo-triangle {
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 0 120px 103.9px 0;
+            border-color: transparent var(--primary-yellow) transparent transparent;
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2));
+        }
+
+        .home-logo-eyes {
+            position: absolute;
+            top: 35px;
+            left: 30px;
+            font-size: 42px;
+            font-weight: bold;
+            color: #333;
+            letter-spacing: 5px;
+        }
+
+        .home-content h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .home-content p {
+            font-size: 20px;
+            color: var(--text-light);
+            margin-bottom: 30px;
+        }
+
+        .coming-soon-badge {
+            display: inline-block;
+            padding: 10px 25px;
+            background: linear-gradient(135deg, var(--primary-yellow) 0%, var(--dark-yellow) 100%);
+            color: var(--text-dark);
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .privacy-content {
+            display: none;
+            background: var(--bg-white);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            margin-top: 20px;
+        }
+
+        .privacy-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .home-content.hidden {
+            display: none;
+        }
+
+        .last-updated {
+            font-size: 14px;
+            color: var(--text-light);
+            margin-bottom: 30px;
+            padding: 10px 20px;
+            background: var(--bg-light);
+            border-radius: 10px;
+            display: inline-block;
+        }
+
+        .privacy-section {
+            margin-bottom: 40px;
+            padding: 25px;
+            background: var(--bg-light);
+            border-radius: 15px;
+            border-left: 4px solid var(--primary-yellow);
+        }
+
+        .privacy-section:nth-child(even) {
+            background: var(--bg-white);
+            border-left-color: #667eea;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, var(--bg-light) 0%, var(--bg-white) 100%);
+            color: var(--text-light);
+            font-size: 14px;
+            margin-top: 60px;
+            border-top: 1px solid var(--border-light);
+        }
+
+        footer p {
+            margin-bottom: 0;
+            font-weight: 500;
+        }
+
+        .footer-logo {
+            width: 30px;
+            height: 30px;
+            display: inline-block;
+            vertical-align: middle;
+            margin-right: 8px;
+            position: relative;
+        }
+
+        .footer-logo-triangle {
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 0 30px 26px 0;
+            border-color: transparent var(--primary-yellow) transparent transparent;
+        }
+
+        .footer-logo-eyes {
+            position: absolute;
+            top: 8px;
+            left: 7px;
+            font-size: 11px;
+            font-weight: bold;
+            color: #333;
+            letter-spacing: 1px;
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .site-title {
+                font-size: 20px;
+            }
+
+            nav {
+                gap: 15px;
+            }
+
+            nav a {
+                font-size: 14px;
+                padding: 6px 12px;
+            }
+
+            .home-content h1 {
+                font-size: 36px;
+            }
+
+            h1 {
+                font-size: 28px;
+            }
+
+            h2 {
+                font-size: 20px;
+            }
+
+            .privacy-content {
+                padding: 20px;
+            }
+
+            .privacy-section {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="main-wrapper">
+        <header>
+            <div class="header-content">
+                <div class="logo-section">
+                    <div class="logo">
+                        <div class="logo-triangle"></div>
+                        <div class="logo-eyes">⌒⌒</div>
+                    </div>
+                    <div class="site-title">Make YouTube Boring</div>
+                </div>
+                <nav>
+                    <a href="#" id="homeLink" class="active">Home</a>
+                    <a href="#" id="privacyLink">Privacy Policy</a>
+                </nav>
+            </div>
+        </header>
+
+        <div class="container">
+            <div class="home-content" id="homeContent">
+                <div class="home-logo">
+                    <div class="home-logo-triangle"></div>
+                    <div class="home-logo-eyes">⌒⌒</div>
+                </div>
+                <h1>Make YouTube Boring</h1>
+                <p>Transform your YouTube experience into a distraction-free zone</p>
+                <div class="coming-soon-badge">More Coming Soon</div>
+            </div>
+
+            <div class="privacy-content" id="privacyContent">
+                <h1>Privacy Policy</h1>
+                <p class="last-updated">Last Updated: 8/24/2025</p>
+
+                <div class="privacy-section">
+                    <h2>Overview</h2>
+                    <p>I created Make YouTube Boring, a Chrome extension that helps reduce distractions on YouTube by modifying its interface. This privacy policy explains what data I collect, how I use it, and your rights.</p>
+                </div>
+
+                <div class="privacy-section">
+                    <h2>Data I Collect</h2>
+
+                    <h3>Personally Identifiable Information</h3>
+                    <ul>
+                        <li><strong>Name:</strong> Sapal</li>
+                        <li><strong>Email:</strong> TODO</li>
+                        <li><strong>User ID:</strong> TODO</li>
+                    </ul>
+
+                    <h3>Authentication Information</h3>
+                    <ul>
+                        <li><strong>OAuth tokens:</strong> Temporary access tokens for Google authentication</li>
+                    </ul>
+
+                    <h3>Website Content</h3>
+                    <ul>
+                        <li><strong>YouTube page elements:</strong> Video titles, images, and page structure (read-only for modification, never stored)</li>
+                    </ul>
+
+                    <h3>Future Data Collection</h3>
+                    <ul>
+                        <li><strong>Financial information:</strong> If I implement payment features, I may collect payment method details through Stripe</li>
+                    </ul>
+                </div>
+
+                <div class="privacy-section">
+                    <h2>How I Use Your Data</h2>
+
+                    <h3>Current Uses</h3>
+                    <ul>
+                        <li><strong>User identification:</strong> To track feedback submissions and prevent spam</li>
+                        <li><strong>Feedback storage:</strong> To store your feedback with proper attribution</li>
+                        <li><strong>Cooldown management:</strong> To enforce a 24-hour limit between feedback submissions</li>
+                        <li><strong>Extension functionality:</strong> To modify YouTube pages according to your preferences</li>
+                    </ul>
+
+                    <h3>Future Uses</h3>
+                    <ul>
+                        <li><strong>Payment processing:</strong> If implemented, to process subscription or payment transactions</li>
+                    </ul>
+                </div>
+
+                <div class="privacy-section">
+                    <h2>Data Storage and Security</h2>
+
+                    <h3>Where I Store Data</h3>
+                    <ul>
+                        <li><strong>Supabase database:</strong> For storing feedback and user information</li>
+                        <li><strong>Local browser storage:</strong> For your boring level preferences and cooldown timestamps</li>
+                        <li><strong>Google servers:</strong> For authentication information (managed by Google)</li>
+                    </ul>
+
+                    <h3>Security Measures</h3>
+                    <ul>
+                        <li>All data transmission uses HTTPS encryption</li>
+                        <li>OAuth tokens are temporary and not stored permanently</li>
+                        <li>Database access is restricted with API keys</li>
+                        <li>No sensitive data is logged or stored in plain text</li>
+                    </ul>
+                </div>
+
+                <div class="privacy-section">
+                    <h2>Data Sharing</h2>
+
+                    <h3>Third-Party Services</h3>
+                    <ul>
+                        <li><strong>Google:</strong> For authentication and user identification</li>
+                        <li><strong>Supabase:</strong> For data storage and backend services</li>
+                        <li><strong>Stripe:</strong> For future payment processing (if implemented)</li>
+                    </ul>
+
+                    <h3>I Do Not</h3>
+                    <ul>
+                        <li>Sell your personal information</li>
+                        <li>Share your data with advertisers</li>
+                        <li>Use your data for marketing</li>
+                        <li>Access your data outside of extension functionality</li>
+                    </ul>
+                </div>
+
+                <div class="privacy-section">
+                    <h2>Your Rights</h2>
+
+                    <h3>Access and Control</h3>
+                    <ul>
+                        <li><strong>View your data:</strong> Contact me to see what data I have about you</li>
+                        <li><strong>Delete your data:</strong> Request deletion of your feedback and user information</li>
+                        <li><strong>Opt out:</strong> Uninstall the extension to stop data collection</li>
+                        <li><strong>Modify preferences:</strong> Change your boring level settings anytime</li>
+                    </ul>
+                </div>
+
+                <div class="privacy-section">
+                    <h2>Data Retention</h2>
+                    <ul>
+                        <li><strong>Feedback data:</strong> Stored indefinitely unless you request deletion</li>
+                        <li><strong>User preferences:</strong> Stored locally in your browser</li>
+                        <li><strong>Authentication data:</strong> Managed by Google, not stored by me</li>
+                    </ul>
+                </div>
+
+                <div class="privacy-section">
+                    <h2>Children's Privacy</h2>
+                    <p>This extension is not intended for children under 13. I do not knowingly collect personal information from children under 13.</p>
+                </div>
+
+                <div class="privacy-section">
+                    <h2>Changes to This Policy</h2>
+                    <p>I may update this privacy policy as the extension evolves. I will notify users of significant changes through the extension or my website.</p>
+                </div>
+
+                <div class="privacy-section">
+                    <h2>Contact Information</h2>
+                    <p>For privacy-related questions or data requests, contact me at:</p>
+                    <ul>
+                        <li><strong>Email:</strong> TODO@gmail.com</li>
+                        <li><strong>Extension:</strong> Use the feedback form in the extension</li>
+                    </ul>
+                </div>
+
+                <div class="privacy-section">
+                    <h2>Consent</h2>
+                    <p>By using this extension, you consent to the collection and use of your data as described in this privacy policy.</p>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>
+                <span class="footer-logo">
+                    <div class="footer-logo-triangle"></div>
+                    <div class="footer-logo-eyes">⌒⌒</div>
+                </span>
+                Made by SapalChap
+            </p>
+        </footer>
+    </div>
+
+    <script>
+        const homeLink = document.getElementById('homeLink');
+        const privacyLink = document.getElementById('privacyLink');
+        const homeContent = document.getElementById('homeContent');
+        const privacyContent = document.getElementById('privacyContent');
+
+        function showHome() {
+            homeContent.classList.remove('hidden');
+            privacyContent.classList.remove('active');
+            homeLink.classList.add('active');
+            privacyLink.classList.remove('active');
+            window.location.hash = '';
+        }
+
+        function showPrivacy() {
+            homeContent.classList.add('hidden');
+            privacyContent.classList.add('active');
+            privacyLink.classList.add('active');
+            homeLink.classList.remove('active');
+            window.location.hash = 'privacy';
+        }
+
+        homeLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            showHome();
+        });
+
+        privacyLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            showPrivacy();
+        });
+
+        // Check URL hash on load
+        if (window.location.hash === '#privacy') {
+            showPrivacy();
+        }
+
+        // Handle back/forward navigation
+        window.addEventListener('hashchange', () => {
+            if (window.location.hash === '#privacy') {
+                showPrivacy();
+            } else {
+                showHome();
+            }
+        });
+    </script>
+</body>
+</html>
