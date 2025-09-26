@@ -228,6 +228,98 @@
             margin-bottom: 30px;
         }
 
+        .cta-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .chrome-store-btn, .demo-video-btn {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 18px 30px;
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            min-width: 180px;
+        }
+
+        .chrome-store-btn {
+            background: linear-gradient(135deg, #4285f4 0%, #34a853 100%);
+            box-shadow: 0 8px 25px rgba(66, 133, 244, 0.3);
+        }
+
+        .demo-video-btn {
+            background: linear-gradient(135deg, #ff4757 0%, #ff3742 100%);
+            box-shadow: 0 8px 25px rgba(255, 71, 87, 0.3);
+        }
+
+        .chrome-store-btn::before, .demo-video-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .chrome-store-btn:hover::before, .demo-video-btn:hover::before {
+            left: 100%;
+        }
+
+        .chrome-store-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(66, 133, 244, 0.4);
+        }
+
+        .demo-video-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(255, 71, 87, 0.4);
+        }
+
+        .chrome-icon, .play-icon {
+            font-size: 24px;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+        }
+
+        .btn-text {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .btn-main {
+            font-size: 18px;
+            font-weight: 700;
+            line-height: 1;
+        }
+
+        .btn-sub {
+            font-size: 12px;
+            opacity: 0.9;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
         .coming-soon-badge {
             display: inline-block;
             padding: 10px 25px;
@@ -373,6 +465,36 @@
             .privacy-section {
                 padding: 15px;
             }
+
+            .chrome-store-btn, .demo-video-btn {
+                padding: 15px 25px;
+                gap: 12px;
+                min-width: 160px;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                gap: 15px;
+                width: 100%;
+                max-width: 300px;
+            }
+
+            .chrome-store-btn, .demo-video-btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .btn-main {
+                font-size: 16px;
+            }
+
+            .btn-sub {
+                font-size: 11px;
+            }
+
+            .cta-section {
+                gap: 15px;
+            }
         }
     </style>
 </head>
@@ -402,7 +524,32 @@
                 </div>
                 <h1>Make YouTube Boring</h1>
                 <p>Transform your YouTube experience into a distraction-free zone</p>
-                <div class="coming-soon-badge">More Coming Soon</div>
+                
+                <div class="cta-section">
+                    <div class="cta-buttons">
+                        <a href="https://chromewebstore.google.com/detail/makeyoutubeboring/nflljpfpgaoignmlgalipgmkjhimlmfb?authuser=0&hl=en" 
+                           target="_blank" 
+                           rel="noopener noreferrer" 
+                           class="chrome-store-btn">
+                            <div class="chrome-icon">🌐</div>
+                            <div class="btn-text">
+                                <span class="btn-main">Add to Chrome</span>
+                                <span class="btn-sub">It's Free!</span>
+                            </div>
+                        </a>
+                        <a href="https://www.youtube.com/watch?v=MX8pgm-8HE8" 
+                           target="_blank" 
+                           rel="noopener noreferrer" 
+                           class="demo-video-btn">
+                            <div class="play-icon">▶️</div>
+                            <div class="btn-text">
+                                <span class="btn-main">Watch Demo</span>
+                                <span class="btn-sub">See it in action</span>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="coming-soon-badge">More Features Coming Soon</div>
+                </div>
             </div>
 
             <div class="privacy-content" id="privacyContent">
